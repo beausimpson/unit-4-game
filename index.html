@@ -23,29 +23,32 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <img class="crystal" src="assets/images/blue-diamond.png" alt="dark blue diamond"/><h1>Crystal Collector</h1><img class="crystal" src="assets/images/blue-diamond.png" alt="dark blue diamond"/>
-            </div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4"><img class="crystal-title" src="assets/images/blue-diamond.png" alt="dark blue diamond" />
+                Crystal
+                Collector <img class="crystal-title" src="assets/images/blue-diamond.png" alt="dark blue diamond" /></h1>
+                <p class="lead">Click on the jewels to match the Number ... Go over and Lose</p>
         </div>
+    </div>
+
+    <div class="container">
         <div class="row">
+            <div class="col-md-6 card">
+                <h1>Random Number:<br><span id="computerNumber"></span></h1>
+                <hr>
+                <h1>Player Score:<br><span id="playerScore"></span></h1>
+                <p>Wins: <span id="wins"></span></p>
+                <p>losses: <span id="losses"></span></p>
+            </div>
             <div class="col-md-6">
-                <button id="button-1" class="btn btn-primary number" value="1">
-                    <h1>1</h1>
-                </button>
-                <button id="button-1" class="btn btn-primary number" value="1">
-                    <h1>2</h1>
-                </button>
-                <button id="button-1" class="btn btn-primary number" value="1">
-                    <h1>3</h1>
-                </button>
-                <button id="button-1" class="btn btn-primary number" value="1">
-                    <h1>4</h1>
-                </button>
+                <div><img src="assets/images/blue-octagon.png" alt="" class="crystal-small img-thumbnail float-left"></div>
+                <div><img src="assets/images/green-diamond.png" alt="" class="crystal-small img-thumbnail float-left"></div>
+                <div><img src="assets/images/red-oval.png" alt="" class="crystal-small img-thumbnail float-left"></div>
+                <div><img src="assets/images/blue-square.png" alt="" class="crystal-small img-thumbnail float-left"></div>
             </div>
-            <div class="col-md-6"></div>
         </div>
+    </div>
     </div>
 
     <!-- Link to jQuery Game file -->

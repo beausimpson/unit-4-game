@@ -1,4 +1,10 @@
-.crystal {
+.crystal-title {
     width: 100px;
     height: 100px;;
+}
+
+.crystal-small {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
 }
