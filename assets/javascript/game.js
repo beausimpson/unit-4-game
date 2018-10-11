@@ -1,11 +1,7 @@
 
 // global variables for game
-// var computerNumber;
-
 var wins = 0;
 var losses = 0;
-
-// var jewelIdArray = ["blue-octagon", "#greem-diamond", "red-oval", "blue-sqaure"];
 
 // init function
 function init() {
@@ -14,14 +10,14 @@ function init() {
 
 // function to (re)start game
 function startGame() {
-
-    var playerScore = 0;
-    computerNumber = randomNumberGenerator(120, 19)
-    console.log(computerNumber);
+    // generates random number for computer
+    computerNumber = randomNumberGenerator(120, 19);
+    playerScore = 0;
 
     // displays default player score / random generated number on screen
     $("#computerNumber").text(computerNumber);
     $("#playerScore").text(playerScore);
+
 
     // adds value to jewel divs
     $("#blue-octagon").val(randomNumberGenerator(12, 1));
@@ -33,58 +29,72 @@ function startGame() {
     $("#blue-square").val(randomNumberGenerator(12, 1));
     console.log($("#blue-square").val());
 
-    // on click functions
-    // add the random crystal scores to the player score
-    $("#blue-octagon").click(function () {
-        console.log($("#blue-octagon").val())
-        playerScore += parseInt($(this).val());
-        $("#playerScore").text(playerScore);
-    });
-    $("#green-diamond").click(function () {
-        console.log($("#green-diamond").val())
-        playerScore += parseInt($(this).val());
-        $("#playerScore").text(playerScore);
-    });
-    $("#red-oval").click(function () {
-        console.log($("#red-oval").val())
-        playerScore += parseInt($(this).val());
-        $("#playerScore").text(playerScore);
-    });
-    $("#blue-square").click(function () {
-        console.log($("#blue-square").val())
-        playerScore += parseInt($(this).val());
-        $("#playerScore").text(playerScore);
-    });
+    // on click functions to add crystal scores to HTML
+    $("#blue-octagon").click(addScores);
+    $("#green-diamond").click(addScores);
+    $("#red-oval").click(addScores);
+    $("#blue-square").click(addScores);
+};
 
+
+
+
+// function to add the random crystal scores to the player score
+function addScores() {
+    playerScore += parseInt($(this).val());
+    $("#playerScore").text(playerScore);
+    winLoss();
+};
+
+function winLoss() {
     // if / else statement to determine win/loss
-    // add wins and losses to screen
-    if (playerScore === computerNumber) {
-        alert("Great Job!!!\nYou Win!!!")
+    // add wins and losses
+    // displays wins / losses on screen
+    if (playerScore == computerNumber) {
         wins++;
+        $("#wins").text(wins);
+        // $("#win-lose").text("Great Job!!! You Win!!!");
+        alert("Great Job!!! You Win!!!");
+        resetGame();
+
     } else if (playerScore > computerNumber) {
-        alert("You Lose!\nTry Again!")
         losses++;
+        $("#losses").text(losses);
+        // $("#win-lose").text("You Lost. Try Again!");
+        alert("You Lost. Try Again!");
+        resetGame();
+
     }
 }
 
+// reset game
+function resetGame() {
+    // generates a new random number for computer
+    computerNumber = randomNumberGenerator(120, 19);
+    // resests playerScore to 0
+    playerScore = 0;
+
+    // displays the numbers for the new game
+    $("#computerNumber").text(computerNumber);
+    $("#playerScore").text(playerScore);
 
 
-window.onload = init();
+    // adds regernated value to jewel divs for new game
+    $("#blue-octagon").val(randomNumberGenerator(12, 1));
+    console.log($("#blue-octagon").val());
+    $("#green-diamond").val(randomNumberGenerator(12, 1));
+    console.log($("#green-diamond").val());
+    $("#red-oval").val(randomNumberGenerator(12, 1));
+    console.log($("#red-oval").val());
+    $("#blue-square").val(randomNumberGenerator(12, 1));
+    console.log($("#blue-square").val());
 
-// helper functions
+}
+
 // random number generator with max, min arguments
 function randomNumberGenerator(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 
-// reset game
-
-
-
-
-// function jewelValueGenerator() {
-//     $(jewelIdArray).each(function () {
-//         $(this).val(randomNumberGenerator(12, 1));
-//     })
-// }
+window.onload = init();
